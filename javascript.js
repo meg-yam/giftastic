@@ -28,14 +28,23 @@ $("#add-gif").on("click", function(event) {
 function displayGifs() {
 
     var one = $(this).attr("data-name");
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + one + "&limit=10&api_key=JWY1Nqe6HigkKrAGVaWA1tzOxWDkgTnD";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + one + "&rating=pg&limit=10&api_key=JWY1Nqe6HigkKrAGVaWA1tzOxWDkgTnD";
 
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        $("gif-view").append(response);
+        $("#gif-view").html("<img src=" + response.data[0].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[1].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[2].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[3].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[4].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[5].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[6].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[7].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[8].images.original.url + ">");
+        $("#gif-view").append("<img src=" + response.data[9].images.original.url + ">");
     });
 }
 
