@@ -1,0 +1,17 @@
+body {
+    background-color: #e6e6e6;
+}
+
+form {
+    float: right;
+    margin-right: 0px;
+}
+
+#gif-view {
+    margin: 5px;
+}
+
+#buttons {
+    margin-bottom: 50px;
+     
+}
