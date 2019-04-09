@@ -7,7 +7,7 @@ function renderButtons() {
     for (var i = 0; i < gifs.length; i++) {
         var b = $("<button>");
       
-        b.addClass("hello");
+        b.addClass("hello btn btn-primary col-1");
         b.attr("data-name", gifs[i]);
         b.text(gifs[i]);
         
@@ -41,7 +41,7 @@ function displayGifs() {
         var result = response.data
 
         for (var i = 0; i < result.length; i++) {
-            var gifDiv = $("<div>");
+            var gifDiv = $("<div col-3>");
 
             var rating = result[i].rating;
 
@@ -57,7 +57,7 @@ function displayGifs() {
             $(gifDiv).append(gifImage);
 
             $("#gif-view").prepend(gifDiv);
-           
+            
             gifImage.on("click", function() {
                 var state = $(this).attr("data-state");
 
@@ -76,8 +76,6 @@ function displayGifs() {
 }
 
 
-
-
-
 $(document).on("click", ".hello", displayGifs);
+
 renderButtons();

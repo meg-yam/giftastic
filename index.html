@@ -4,22 +4,39 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="style.css" rel="stylesheet">
         <title>Color Gifs</title>
     </head>
     <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container-fluid">
+                        <div class="row" id="buttons"></div>
+                    </div>
+                </div>
+            </div>
 
-        <div id="buttons"></div>
+            <div class="row">
+                
+                <div class="col-9">
+                    <div class="container-fluid"> 
+                        <div class="row" id="gif-view"></div>
+                    </div>
+                </div>
 
-        <form id="gif-form">
-            <label for="gif-input">Add a New Color!</label><br>
-            <input type="text" id="gif-input"><br>
+                <div class="col-3">
+                    <form id="gif-form">
+                        <label for="gif-input">Add a New Color!</label><br>
+                        <input type="text" id="gif-input"><br>
 
-            <input id="add-gif" type="submit" value="Add Color"> 
-        </form>
-
-        <div id="gif-view"></div>
-        
+                        <input id="add-gif" class="btn btn-primary" type="submit" value="Add Color"> 
+                    </form>
+                </div>   
+                
+            </div>       
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="javascript.js"></script>
