@@ -15,6 +15,7 @@ function renderButtons() {
     }
 };
 
+
 $("#add-gif").on("click", function(event) {
     event.preventDefault();
     var one = $("#gif-input").val().trim();
@@ -24,6 +25,7 @@ $("#add-gif").on("click", function(event) {
     
     renderButtons();
 });
+
 
 function displayGifs() {
 
@@ -35,18 +37,47 @@ function displayGifs() {
         method: "GET"
     }).then(function(response) {
         console.log(response);
-        $("#gif-view").html("<img src=" + response.data[0].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[1].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[2].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[3].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[4].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[5].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[6].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[7].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[8].images.original.url + ">");
-        $("#gif-view").append("<img src=" + response.data[9].images.original.url + ">");
+
+        var result = response.data
+
+        for (var i = 0; i < result.length; i++) {
+            var gifDiv = $("<div>");
+
+            var rating = result[i].rating;
+
+            var d = $("<div>").text("Rating: " + rating);
+
+            var gifImage = $("<img>");
+            gifImage.attr("src", result[i].images.fixed_height_still.url);
+            gifImage.attr("data-still", result[i].images.fixed_height_still.url);
+            gifImage.attr("data-animate", result[i].images.fixed_height.url)
+            gifImage.attr("data-state", "still");
+
+            $(gifDiv).append(d);
+            $(gifDiv).append(gifImage);
+
+            $("#gif-view").prepend(gifDiv);
+           
+            gifImage.on("click", function() {
+                var state = $(this).attr("data-state");
+
+                if (state === "still") {
+                    $(this).attr("src", $(this).attr("data-animate"));
+                    $(this).attr("data-state", "animate")
+                } else {
+                    $(this).attr("src", $(this).attr("data-still"));
+                    $(this).attr("data-state", "still");
+                }
+            });
+        };
+
+       
     });
 }
+
+
+
+
 
 $(document).on("click", ".hello", displayGifs);
 renderButtons();
